@@ -30,7 +30,7 @@ contract ECDSAModule is AbstractModule, Ownable {
     /**
      * @notice This method is used to run the module's validation logic
      * @param attestationPayload - AttestationPayload containing the user address as `subject` and tokenUri as `attestationData`
-     * @param validationPayload - Payload encoded with abi.encode(userAddress, tokenUri).toEthSignedMessageHash().sign(signer)
+     * @param validationPayload - Payload encoded with abi.encode(tokenUri).toEthSignedMessageHash().sign(signer)
      */
     function run(
         AttestationPayload memory attestationPayload,
