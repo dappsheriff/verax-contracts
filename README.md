@@ -4,9 +4,9 @@ DappSheriff issues NFT attestations on Verax. Once user mints their ERC721 revie
 
 Contracts:
 - Goerli Testnet
-  - DAPPSHERIFF NFT: 0xcc8C45bD9b1E1569c139D5511d8f66031f788D30
-  - ECDSA_MODULE: 0x96d6750e92028f514D44a63A77A2f09E6Aba1398
-  - PORTAL: 0xe2bb4e0f8d3f57dc02485d85e6be529b5c69541f
+  - DAPPSHERIFF NFT: [0xcc8C45bD9b1E1569c139D5511d8f66031f788D30](https://goerli.lineascan.build/address/0xcc8C45bD9b1E1569c139D5511d8f66031f788D30)
+  - ECDSA_MODULE: [0x96d6750e92028f514D44a63A77A2f09E6Aba1398](https://goerli.lineascan.build/address/0x96d6750e92028f514D44a63A77A2f09E6Aba1398)
+  - DappSheriff PORTAL: [0xe2bb4e0f8d3f57dc02485d85e6be529b5c69541f](https://goerli.lineascan.build/address/0xe2bb4e0f8d3f57dc02485d85e6be529b5c69541f)
 
 
 ### ECDSA Module 
@@ -14,7 +14,7 @@ DappSheriff allows all users to mint their reviews, but they need to be attested
 DappSheriff uses ECDSA module to attest the users permit. 
 
 To get the signature for the permit, users simply need to get calldata from DappSheriff's client, 
-whill will already contain data for the NFT mint and Verax attestation.
+which will already contain data for the NFT mint and Verax attestation.
 
 ### Attestation Schema
 Verax's SchemaRegistry accepts this parameters:
