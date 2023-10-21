@@ -1,66 +1,50 @@
-## Foundry
+## DappSheriff x Verax
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+DappSheriff issues NFT attestations on Verax. Once user mints their ERC721 review, DappSheriff attestates the user on Verax.
 
-Foundry consists of:
+### Attestation Schema
+Verax's SchemaRegistry accepts this parameters:
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+```solidity
+function createSchema(
+    string memory name,
+    string memory description,
+    string memory context,
+    string memory schemaString
+)
 ```
 
-### Test
+DappSheriff sends this parameters:
+- name - "DappSheriff Review Attestation"
+- description - "Proof of user's review on DappSheriff"
+- context - "review"
+- schemaString - "string dappSheriffTokenId"
 
-```shell
-$ forge test
+### ECDSA Module 
+DappSheriff allows all users to mint their reviews, but they need to be attested by DappSheriff. 
+DappSheriff uses ECDSA module to attest the users permit. 
+
+To get the signature for the permit, users simply need to get calldata from DappSheriff's client, 
+whill will already contain data for the NFT mint and Verax attestation.
+
+
+### Portal
+```solidity
+DappSheriff has decided to use the default portal created by Portal Registry
+```solidity
+function deployDefaultPortal(
+  address[] calldata modules,
+  string memory name,
+  string memory description,
+  bool isRevocable,
+  string memory ownerName
+)
 ```
 
-### Format
+DappSheriff sends this parameters:
+- modules - []
+- name - "DappSheriff Portal"
+- description - "Portal to issue review attestations"
+- isRevocable - false
+- ownerName - "dappsheriff.com"
 
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
